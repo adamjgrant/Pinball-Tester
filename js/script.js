@@ -1,4 +1,4 @@
-var clock_is_done, convert_seconds_to_time, deck, grade, initiate, int_number_correct, int_number_incorrect, int_number_of_slides, int_slides_completed, question, quiz_numbers, radios, response, session_is_done, set_clock, set_speed, set_speed_readout, shuffle, speed, speed_in_seconds, start_clock, start_session, time, time_remaining_in_seconds, timer, update_clock, m$, deck;
+var clock_is_done, initiate, int_number_correct, int_number_incorrect, int_number_of_slides, int_slides_completed, question, quiz_numbers, radios, response, session_is_done, set_clock, set_speed, set_speed_readout, speed, speed_in_seconds, start_clock, time, time_remaining_in_seconds, timer, update_clock, m$;
 
 m$ = {},
 
@@ -6,8 +6,9 @@ m$.navigation = new Mozart();
 m$.tab_pane   = new Mozart();
 m$.quizzer    = new Mozart();
 m$.settings   = new Mozart();
+m$.utilities  = new Mozart();
 
-deck          = [
+const deck          = [
   ["Poppy Seed", 1]
   ,['Flax seed', 2]
   ,['Cumin', 3]
@@ -109,20 +110,6 @@ deck          = [
   ,['Pumpkin', 99]
 ]
 
-convert_seconds_to_time = function (_seconds) {
-	var minutes, seconds;
-	minutes = String(Math.floor(_seconds / 60)).padStart(2, "0");
-	seconds = String(_seconds % 60).padStart(2, "0");
-	return `${minutes}:${seconds}`;
-};
-
-set_speed = function (value) {
-	speed = value;
-	speed_in_seconds = 101 - speed;
-	time_remaining_in_seconds = speed_in_seconds;
-	return time = convert_seconds_to_time(speed_in_seconds);
-};
-
 set_clock = function (_time) {
 	var clock_time;
 	clock_time = _time || time;
@@ -144,31 +131,6 @@ start_clock = function () {
 	}, 1000);
 };
 
-set_speed_readout = function () {
-	speed_readout.innerHTML = time;
-	return speed_readout_total.innerHTML = convert_seconds_to_time(speed_in_seconds * int_number_of_slides);
-};
-
-start_session = function (reset) {
-	set_clock(convert_seconds_to_time(speed_in_seconds));
-	int_slides_completed++;
-	if (reset) {
-		int_slides_completed = 1;
-		int_number_incorrect = 0;
-		int_number_correct = 0;
-		shuffle(deck);
-		clearInterval(timer);
-	}
-	initiate();
-	start_clock();
-	if (quiz_numbers) {
-		[question, response] = deck.pop();
-	} else {
-		[response, question] = deck.pop();
-	}
-	return visual.innerHTML = question;
-};
-
 clock_is_done = function (correct_answer_given) {
 	clearInterval(timer);
 	if (correct_answer_given) {
@@ -184,22 +146,6 @@ clock_is_done = function (correct_answer_given) {
 		return initiate();
 	}
 	return start_session();
-};
-
-shuffle = function (a) {
-	var i, j, x;
-	j = void 0;
-	x = void 0;
-	i = void 0;
-	i = a.length - 1;
-	while (i > 0) {
-		j = Math.floor(Math.random() * (i + 1));
-		x = a[i];
-		a[i] = a[j];
-		a[j] = x;
-		i--;
-	}
-	return a;
 };
 
 session_is_done = function () {
@@ -218,26 +164,5 @@ initiate = function () {
 	set_speed(speed_setter.value);
 	set_clock();
 	set_speed_readout();
-	number_of_slides.innerHTML = int_number_of_slides;
-	slides_completed.innerHTML = int_slides_completed;
-	number_incorrect.innerHTML = int_number_incorrect;
-	number_correct.innerHTML = int_number_correct;
 	return answer.focus();
-};
-
-grade = function (_submission) {
-	var correct_answers, initials, submission;
-	console.log(_submission);
-	submission = String(_submission).toLowerCase();
-	correct_answers = [String(response).toLowerCase()];
-	if (!quiz_numbers) {
-		initials = correct_answers[0].split(" ").map(function (word) {
-			return word.substr(0, 1);
-		}).join("");
-		if (!(initials.length < 2)) {
-			correct_answers.push(initials);
-		}
-	}
-	console.log(correct_answers, submission);
-	return clock_is_done(correct_answers.includes(submission));
 };

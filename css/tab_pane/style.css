@@ -15,10 +15,6 @@
    font-size: 1.4rem;
 }
 
-[data-component="tab_pane"] article.settings {
-  display: block;
-}
-
 [data-component="tab_pane"] table {
   width: 100%;
 }
