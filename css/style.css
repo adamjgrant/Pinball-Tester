@@ -1,57 +1,9 @@
+@import 'quizzer/style.css';
+@import 'tab_pane/style.css';
+@import 'navigation/style.css';
+
 html {
   font-size: 16px;
-}
-
-/* Pane */
-[data-component="tab_pane"] article {
-  display: none;
-  padding: 25px;
-  height: calc(100vh - 60px);
-  overflow: auto;
-}
-
-[data-component="tab_pane"] article.active {
-  display: block;
-}
-
-[data-component="tab_pane"] article h1 {
-   margin: 0;
-   margin-bottom: 15px;
-   font-size: 1.4rem;
-}
-
-[data-component="tab_pane"] article.settings {
-  display: block;
-}
-
-[data-component="tab_pane"] table {
-  width: 100%;
-}
-
-[data-component="tab_pane"] table td {
-  padding: 15px 0;
-  vertical-align: top;
-}
-
-[data-component="tab_pane"] label {
-  display: block;
-  margin-bottom: 8px;
-}
-
-/* Navigation */
-[data-component="navigation"] a.active {
-  background: #2387ca; 
-}
-[data-component="navigation"] a:not(.active):hover {
-  background: #47a2df;
-}
-
-[data-component="quizzer"] .quiz {
-  display: none;
-}
-
-[data-component="quizzer"] .quiz.active {
-  display: block;
 }
 
 /* Make sure this is last */
