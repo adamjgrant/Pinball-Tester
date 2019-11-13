@@ -4,19 +4,22 @@
     <link rel="stylesheet" href="css/style.bare_minimum.css" />
   </head>
   <body>
-    <main id="main">
+    <main data-component="tab_pane">
       <img class="loading" alt="loading" src="img/loading.gif" />
+      <article class="settings">Settings</article>
+      <article class="quizzer">Quizzer</article>
+      <article class="results">Results</article>
     </main>
-    <nav class="navigation">
+    <nav data-component="navigation">
       <ul>
         <li>
-          <a href="#">Settings</a>
+          <a class="active" href="#settings">Settings</a>
         </li>
         <li>
-          <a href="#">Quizzer</a>
+          <a href="#quizzer">Quizzer</a>
         </li>
         <li>
-          <a href="#">Results</a>
+          <a href="#results">Results</a>
         </li>
       </ul>
     </nav>
@@ -24,5 +27,16 @@
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/mozart.js"></script>
+    <script src="js/script.js"></script>
+
+    <script src="js/api/navigation.js"></script>
+    <script src="js/api/tab_pane.js"></script>
+
+    <script src="js/events/navigation.js"></script>
+    <script src="js/events/tab_pane.js"></script>
+
+    <script>
+      Mozart.init();
+    </script>
   </body>
 </html>

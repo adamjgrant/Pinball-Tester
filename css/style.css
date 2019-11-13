@@ -1,0 +1,19 @@
+[data-component="tab_pane"] article {
+  display: none;
+}
+
+[data-component="tab_pane"] article.settings {
+  display: block;
+}
+
+[data-component="navigation"] a.active {
+  background: #2387ca; 
+}
+[data-component="navigation"] a:hover {
+  background: #47a2df;
+}
+
+/* Make sure this is last */
+.loading {
+  display: none;
+}

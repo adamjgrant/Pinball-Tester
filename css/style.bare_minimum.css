@@ -7,7 +7,7 @@ html {
   background: #ECF0F1;
 }
 
-.navigation {
+[data-component="navigation"] {
   background: #3498DB;
   position: fixed;
   bottom: 0;
@@ -15,7 +15,7 @@ html {
   right: 0;
 }
 
-.navigation ul {
+[data-component="navigation"] ul {
   padding: 0 25px;
   list-style: none;
   margin: 0 auto;
@@ -24,11 +24,11 @@ html {
   display: flex;
 }
 
-.navigation li {
+[data-component="navigation"] li {
   width: 33%;
 }
 
-.navigation a {
+[data-component="navigation"] a {
   --height: 60px;
   color: white;
   text-decoration: none;
