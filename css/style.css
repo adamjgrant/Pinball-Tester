@@ -9,7 +9,7 @@
 [data-component="navigation"] a.active {
   background: #2387ca; 
 }
-[data-component="navigation"] a:hover {
+[data-component="navigation"] a:not(.active):hover {
   background: #47a2df;
 }
 
