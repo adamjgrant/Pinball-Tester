@@ -7,7 +7,7 @@
   <body>
     <main data-component="tab_pane">
       <img class="loading" alt="loading" src="img/loading.gif" />
-      <article class="settings">
+      <article class="settings" data-persist-key="0b">
         <h1>Settings</h1>
         <table>
           <tbody>
@@ -35,23 +35,31 @@
           </tbody>
         </table>
       </article>
-      <article class="quizzer">
-        <p>Quizzer</p>
+      <article data-component="quizzer" data-persist-key="1b">
+        <div class="active_quiz quiz">
+          <div class="display">Quiz Item</div>
+					<input type="text">
+					<progress max="100" value=0></progress>
+        </div>
+
+        <div class="inactive_quiz quiz active">
+					<button>Begin</button>
+				</div>
       </article>
-      <article class="results">
+      <article class="results" data-persist-key="2b">
         <p>Results</p>
       </article>
     </main>
     <nav data-component="navigation">
       <ul>
         <li>
-          <a class="active" href="#settings">Settings</a>
+          <a class="active" href="#settings" data-persist-key="0">Settings</a>
         </li>
         <li>
-          <a href="#quizzer">Quizzer</a>
+          <a href="#quizzer" data-persist-key="1">Quizzer</a>
         </li>
         <li>
-          <a href="#results">Results</a>
+          <a href="#results" data-persist-key="2">Results</a>
         </li>
       </ul>
     </nav>
@@ -63,10 +71,13 @@
 
     <script src="js/api/navigation.js"></script>
     <script src="js/api/tab_pane.js"></script>
+    <script src="js/api/quizzer.js"></script>
 
     <script src="js/events/navigation.js"></script>
     <script src="js/events/tab_pane.js"></script>
+    <script src="js/events/quizzer.js"></script>
 
     <script>Mozart.init();</script>
+    <script src="js/simper.js"></script>
   </body>
 </html>

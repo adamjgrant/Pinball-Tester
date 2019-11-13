@@ -10,6 +10,10 @@ html {
   overflow: auto;
 }
 
+[data-component="tab_pane"] article.active {
+  display: block;
+}
+
 [data-component="tab_pane"] article h1 {
    margin: 0;
    margin-bottom: 15px;
@@ -40,6 +44,14 @@ html {
 }
 [data-component="navigation"] a:not(.active):hover {
   background: #47a2df;
+}
+
+[data-component="quizzer"] .quiz {
+  display: none;
+}
+
+[data-component="quizzer"] .quiz.active {
+  display: block;
 }
 
 /* Make sure this is last */
