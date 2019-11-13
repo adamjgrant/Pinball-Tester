@@ -1,7 +1,37 @@
+:root {
+  --green: #8eb83e;
+  --blue: #3498DB;
+  --red: rgb(199, 56, 59);
+}
+
+[data-component="navigation"] {
+  animation-direction: alternate;
+  animation-iteration-count: 2;
+  animation-duration: 0.25s;
+}
+
 [data-component="navigation"] a.active {
-  background: #2387ca; 
+  background: rgba(0, 0, 0, 0.1);
 }
 
 [data-component="navigation"] a:not(.active):hover {
-  background: #47a2df;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes flash_correct {
+  0%   { background: var(--blue); }
+  100% { background: var(--green);  }
+}
+
+@keyframes flash_incorrect {
+  0%   { background: var(--blue); }
+  100% { background: var(--red);  }
+}
+
+[data-component="navigation"].correct {
+  animation-name: flash_correct;
+}
+
+[data-component="navigation"].incorrect {
+  animation-name: flash_incorrect;
 }

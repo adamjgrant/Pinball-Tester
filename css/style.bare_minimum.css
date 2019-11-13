@@ -1,3 +1,7 @@
+:root {
+  --blue: #3498DB;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -8,7 +12,7 @@ html {
 }
 
 [data-component="navigation"] {
-  background: #3498DB;
+  background: var(--blue);
   position: fixed;
   bottom: 0;
   left: 0;

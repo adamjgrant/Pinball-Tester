@@ -20,8 +20,12 @@
   width: 100%; 
 }
 
-[data-component="quizzer"] input {
+[data-component="quizzer"] .submission {
   border-radius: 5px;
   padding: 5px 3px;
   border: 1px solid white;
+}
+
+[data-component="quizzer"] .clock {
+  display: none;
 }
