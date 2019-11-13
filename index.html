@@ -2,13 +2,45 @@
 <html>
   <head>
     <link rel="stylesheet" href="css/style.bare_minimum.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
   </head>
   <body>
     <main data-component="tab_pane">
       <img class="loading" alt="loading" src="img/loading.gif" />
-      <article class="settings">Settings</article>
-      <article class="quizzer">Quizzer</article>
-      <article class="results">Results</article>
+      <article class="settings">
+        <h1>Settings</h1>
+        <table>
+          <tbody>
+            <tr>
+              <td>Quiz Type</td>
+              <td>
+                <label>
+                  <input type="radio" name="quiz_type" value="numbers">
+                  Numbers
+                </label>
+                <label>
+                  <input type="radio" name="quiz_type" value="names">
+                  Names
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>Slides per session</td>
+              <td><input type="number"></td>
+            </tr>
+            <tr>
+              <td>Difficulty Level</td>
+              <td><input type="range" min=0 max=100></td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+      <article class="quizzer">
+        <p>Quizzer</p>
+      </article>
+      <article class="results">
+        <p>Results</p>
+      </article>
     </main>
     <nav data-component="navigation">
       <ul>
@@ -35,8 +67,6 @@
     <script src="js/events/navigation.js"></script>
     <script src="js/events/tab_pane.js"></script>
 
-    <script>
-      Mozart.init();
-    </script>
+    <script>Mozart.init();</script>
   </body>
 </html>
