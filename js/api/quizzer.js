@@ -1,5 +1,5 @@
 m$.quizzer.api({
-  start_quiz: function(_$, options) {
+  start_quiz: function(_$, options) { 
     this.slides_completed = -1;
     this.number_correct   = 0;
     this.number_incorrect = 0;
@@ -12,15 +12,17 @@ m$.quizzer.api({
     this.clock_display_timer       = 0;
     this.time_remaining_in_seconds = 0;
 
-    _$(".active_quiz")[0].classList.add("active");
-    _$(".inactive_quiz")[0].classList.remove("active");
-
+    _$.api.toggle_tabs({ from: "results", to: "quiz" });
     _$.api.next_card(); 
   }, 
 
   next_card: function(_$, options) { 
     if (options && options.time_expired) {
       _$.api.submit({ submission: _$(".submission")[0].value });
+    }
+
+    if (this.slides_completed >= m$.settings.number_of_slides) {
+      return _$.api.finish_session();
     }
 
     this.slides_completed++;
@@ -36,6 +38,7 @@ m$.quizzer.api({
 
     _$(".display")[0].innerHTML = this.card.question;
     _$(".submission")[0].value = "";
+    _$("progress.session")[0].value = this.slides_completed == 0 ? 0 : this.slides_completed/m$.settings.slides_per_session * 100;
     _$.api.focus_input();
     _$.api.reset_card_timer();
   },
@@ -100,16 +103,27 @@ m$.quizzer.api({
       percent_complete = 100;
     }
 
-    _$("progress")[0].value = percent_complete;
+    _$("progress.card")[0].value = percent_complete;
   },
 
   validate_character: (_$, options) => { 
     // TODO: This doesn't accept the command key, such as command+a
-    if (!/\d/.test(options.value)) return options.e.preventDefault();
+    if (options.e.target.type == "number" && !/\d/.test(options.value)) return options.e.preventDefault();
   },
 
   submit: function(_$, options) {
-    if (this.card.answer == options.submission) {
+    var actual, expected;
+
+    actual = String(this.card.answer).toLowerCase();
+    expected = String(options.submission).toLowerCase();
+
+    if (
+        actual == expected
+        || actual + "s" == expected 
+        || actual + "ies" == expected
+        || actual == expected + "s"
+        || actual == expected + "ies"
+    ) {
       _$.api.grade_correct();
     }
     else {
@@ -121,19 +135,17 @@ m$.quizzer.api({
 
   grade_correct: function(_$, options) {
     this.number_correct++;
-    var nav = $("[data-component='navigation']")[0];
-    nav.classList.add("correct");
-    setTimeout(() => {
-      nav.classList.remove("correct");
-    }, 300);
+    m$.navigation.api.toggle_class({ classname: "correct" });
   },
 
   grade_incorrect: function(_$, options) {
+    console.log("Should be", this.card.answer);
     this.number_incorrect++;
-    var nav = $("[data-component='navigation']")[0];
-    nav.classList.add("incorrect");
-    setTimeout(() => {
-      nav.classList.remove("incorrect");
-    }, 300);
+    m$.navigation.api.toggle_class({ classname: "incorrect" });
   },
+
+  finish_session: function(_$, options) {
+    _$.api.stop_quiz();    
+    _$.api.toggle_tabs({ from: "quiz", to: "results" });
+  }
 });

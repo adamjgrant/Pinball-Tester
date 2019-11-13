@@ -10,6 +10,10 @@
   animation-duration: 0.25s;
 }
 
+[data-component="navigation"] .invisible {
+  display: none;
+}
+
 [data-component="navigation"] a.active {
   background: rgba(0, 0, 0, 0.1);
 }

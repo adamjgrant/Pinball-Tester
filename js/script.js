@@ -7,6 +7,7 @@ m$.tab_pane   = new Mozart();
 m$.quizzer    = new Mozart();
 m$.settings   = new Mozart();
 m$.utilities  = new Mozart();
+m$.results    = new Mozart();
 
 const deck          = [
   ["Poppy Seed", 1]
