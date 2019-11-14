@@ -117,3 +117,13 @@ initiate = function () {
 	set_speed_readout();
 	return answer.focus();
 }; 
+
+document.querySelectorAll("input").forEach((el) => {
+  ((el) => {
+    el.addEventListener("blur", () => {
+      document.querySelectorAll("article").forEach((_el) => {
+        _el.scrollTop = 0;
+      });
+    });
+  })(el)
+});
