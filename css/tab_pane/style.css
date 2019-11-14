@@ -23,6 +23,12 @@
    font-size: 2.5rem;
 }
 
+[data-component="tab_pane"] article h2 {
+   margin: 0;
+   margin-bottom: 15px;
+   font-size: 1.2rem;
+}
+
 [data-component="tab_pane"] table {
   width: 100%;
 }
@@ -35,4 +41,8 @@
 [data-component="tab_pane"] label {
   display: block;
   margin-bottom: 8px;
+}
+
+[data-component="tab_pane"] .form_group {
+  margin-bottom: 60px;
 }

@@ -13,32 +13,29 @@
           <h1>Settings</h1>
           <button>New Quiz</button>
         </div>
-        <table>
-          <tbody>
-            <tr>
-              <td>Quiz Type</td>
-              <td>
-                <label>
-                  <input type="radio" name="quiz_type" value="numbers">
-                  Numbers
-                </label>
-                <label>
-                  <input type="radio" name="quiz_type" value="names">
-                  Names
-                </label>
-              </td>
-            </tr>
-            <tr>
-              <td>Slides per session</td>
-              <td><input type="number"></td>
-            </tr>
-            <tr>
-              <td>Difficulty Level</td>
-              <td><input type="range" min=1 max=100></td>
-            </tr>
-          </tbody>
-        </table>
-        <!--p class="help">Or press space</p-->
+
+        <div class="form_group">
+          <h2>Quiz Type</h2>
+          <label>
+            <input type="radio" name="quiz_type" value="numbers">
+            Numbers
+          </label>
+          <label>
+            <input type="radio" name="quiz_type" value="names">
+            Names
+          </label>
+        </div>
+
+        <div class="form_group">
+          <h2>Slides per Session</h2>
+          <input type="number">
+        </div>
+
+        <div class="form_group">
+          <h2>Difficulty Level</h2>
+          <input type="range" min=1 max=100>
+        </div>
+
       </article>
       <article data-component="quizzer">
         <div class="quiz">
