@@ -167,3 +167,41 @@ initiate = function () {
 	set_speed_readout();
 	return answer.focus();
 };
+
+var scrollPos = $(document).scrollTop();
+$(window).scroll(function(){
+    scrollPos = $(document).scrollTop();
+});
+var savedScrollPos = scrollPos;
+
+function is_iOS() {
+  var iDevices = [
+    'iPad Simulator',
+    'iPhone Simulator',
+    'iPod Simulator',
+    'iPad',
+    'iPhone',
+    'iPod'
+  ];
+  while (iDevices.length) {
+    if (navigator.platform === iDevices.pop()){ return true; }
+  }
+  return false;
+}
+
+$('input[type=text]').on('touchstart', function(){
+    if (is_iOS()){
+        savedScrollPos = scrollPos;
+        $('body').css({
+            position: 'relative',
+            top: -scrollPos
+        });
+        $('html').css('overflow','hidden');
+    }
+})
+.blur(function(){
+    if (is_iOS()){
+        $('body, html').removeAttr('style');
+        $(document).scrollTop(savedScrollPos);
+    }
+});
