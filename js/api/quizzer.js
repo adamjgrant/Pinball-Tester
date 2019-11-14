@@ -48,6 +48,13 @@ m$.quizzer.api({
 
   focus_input: (_$, options) => { 
     _$("input")[0].focus();
+    var height = window.screen.availHeight;
+        css    =`
+          <style>[data-component="tab_pane"] article {
+            max-height: calc(${height}px - 60px);
+          }</style>
+        `;
+    document.body.innerHTML += css;
   },
 
   kill_card_timer: function(_$, options) {
