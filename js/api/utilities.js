@@ -23,5 +23,13 @@ m$.utilities.api({
     }
 
     return a;
+  }, 
+
+  get_cache: (_$, options) => { 
+    return localStorage.getObject(`pinball.${options.key}`);
+  },
+
+  set_cache: (_$, options) => { 
+    return localStorage.setObject(`pinball.${options.key}`, options.value);
   },
 });
