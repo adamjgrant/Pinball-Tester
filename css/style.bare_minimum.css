@@ -9,6 +9,7 @@
 html {
   font-family: sans-serif;
   background: #ECF0F1;
+  overflow: hidden;
 }
 
 [data-component="navigation"] {
