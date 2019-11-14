@@ -1,6 +1,7 @@
 @import 'quizzer/style.css';
 @import 'tab_pane/style.css';
 @import 'navigation/style.css';
+@import 'settings/style.css';
 @import 'results/style.css';
 
 html {

@@ -1,2 +1,6 @@
-[data-component="settings"] {
+[data-component="settings"] input[type="number"] {
+  padding: 8px 6px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
 }

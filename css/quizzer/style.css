@@ -30,6 +30,7 @@
   border: 0;
   outline-color: #BBB;
   box-shadow: none;
+  outline: none;
 }
 
 [data-component="quizzer"] .clock {

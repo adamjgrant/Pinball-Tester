@@ -14,6 +14,10 @@
   display: none;
 }
 
+[data-component="navigation"] a {
+  font-size: 1.2rem;
+}
+
 [data-component="navigation"] a.active {
   background: rgba(0, 0, 0, 0.1);
 }
