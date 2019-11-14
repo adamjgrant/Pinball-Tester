@@ -10,7 +10,7 @@ m$.results.api({
     };
 
     this.ReportCard.prototype.percent_grade = function() {
-      return this.correct <= 0 ? "0%" : `${Math.floor(this.correct / this.total) * 100}%`
+      return this.correct <= 0 ? "0%" : `${Math.ceil(this.correct / this.total * 100)}%`
     }
 
     this.ReportCard.prototype.time = function() {
