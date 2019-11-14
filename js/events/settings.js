@@ -1,4 +1,6 @@
 m$.settings.events(_$ => {
+  _$("button")[0].addEventListener("click", m$.quizzer.api.start_quiz); 
+
   _$("input[type='radio']").forEach(el => {
     (el => {
       el.addEventListener("click", e => {

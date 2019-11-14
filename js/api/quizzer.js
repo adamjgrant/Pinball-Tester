@@ -17,15 +17,11 @@ m$.quizzer.api({
   }, 
 
   next_card: function(_$, options) { 
-    if (options && options.time_expired) {
-      _$.api.submit({ submission: _$(".submission")[0].value });
-    }
+    this.slides_completed++; 
 
-    if (this.slides_completed >= m$.settings.number_of_slides) {
+    if (this.slides_completed >= m$.settings.slides_per_session) {
       return _$.api.finish_session();
-    }
-
-    this.slides_completed++;
+    } 
 
     if (m$.settings.quiz_type == "numbers") { 
       [this.card.question, this.card.answer] = this.deck.pop(); 
@@ -38,15 +34,14 @@ m$.quizzer.api({
 
     _$(".display")[0].innerHTML = this.card.question;
     _$(".submission")[0].value = "";
-    _$("progress.session")[0].value = this.slides_completed == 0 ? 0 : this.slides_completed/m$.settings.slides_per_session * 100;
+    _$("progress.session")[0].value = this.slides_completed <= 0 ? 0 : (this.slides_completed/m$.settings.slides_per_session) * 100;
     _$.api.focus_input();
     _$.api.reset_card_timer();
   },
 
   stop_quiz: (_$, options) => {
-    _$(".active_quiz")[0].classList.remove("active");
-    _$(".inactive_quiz")[0].classList.add("active");
     _$.api.kill_card_timer();
+    _$.api.kill_clock_display_timer();
   },
 
   focus_input: (_$, options) => { 
@@ -62,7 +57,7 @@ m$.quizzer.api({
 
   start_card_timer: function(_$, options) {
     this.timer = setInterval(() => {
-      _$.api.next_card({ time_expired: true });
+      _$.api.submit()
     }, m$.settings.speed_in_seconds * 1000);
     _$.api.reset_clock_display_timer();
   },
@@ -90,7 +85,6 @@ m$.quizzer.api({
   update_clock_face: function(_$, options) {
     this.time_remaining_in_seconds--; 
     _$.api.set_clock_face({ seconds: this.time_remaining_in_seconds });
-    if (this.time_remaining_in_seconds < 0) _$.api.next_card();
   },
 
   set_clock_face: (_$, options) => { 
@@ -113,6 +107,8 @@ m$.quizzer.api({
 
   submit: function(_$, options) {
     var actual, expected;
+
+    options = options || { submission: _$(".submission")[0].value }
 
     actual = String(this.card.answer).toLowerCase();
     expected = String(options.submission).toLowerCase();
@@ -139,13 +135,14 @@ m$.quizzer.api({
   },
 
   grade_incorrect: function(_$, options) {
-    console.log("Should be", this.card.answer);
+    console.info("Should be", this.card.answer);
     this.number_incorrect++;
     m$.navigation.api.toggle_class({ classname: "incorrect" });
   },
 
   finish_session: function(_$, options) {
     _$.api.stop_quiz();    
+    m$.results.api.register_new_score();
     _$.api.toggle_tabs({ from: "quiz", to: "results" });
   }
 });

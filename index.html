@@ -7,10 +7,10 @@
   <body>
     <main data-component="tab_pane">
       <img class="loading" alt="loading" src="img/loading.gif" />
-      <article class="settings active">
+      <article data-component="settings" class="settings active">
         <h1>Settings</h1>
         <table>
-          <tbody data-component="settings">
+          <tbody>
             <tr>
               <td>Quiz Type</td>
               <td>
@@ -34,6 +34,7 @@
             </tr>
           </tbody>
         </table>
+        <button>New Quiz</button>
       </article>
       <article data-component="quizzer">
         <div class="quiz">
@@ -47,6 +48,18 @@
       <article data-component="results" class="results">
         <h1>Results</h1>
         <button>New Quiz</button>
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Correct</th>
+              <th>Incorrect</th>
+              <th>Grade</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
       </article>
     </main>
     <nav data-component="navigation">
