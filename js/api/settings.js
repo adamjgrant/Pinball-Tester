@@ -31,6 +31,7 @@ m$.settings.api({
 
     this.speed = options.difficulty;
     this.speed_in_seconds = 101 - this.speed;
+    _$(".speed_readout")[0].innerHTML = m$.utilities.api.convert_seconds_to_time({ seconds: this.speed_in_seconds });
     this.time_remaining_in_seconds = this.speed_in_seconds;
     this.time = m$.utilities.api.convert_seconds_to_time({ seconds: this.speed_in_seconds });
   },

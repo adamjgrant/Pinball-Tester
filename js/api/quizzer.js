@@ -135,13 +135,12 @@ m$.quizzer.api({
         || actual == expected + "s"
         || actual == expected + "ies"
     ) {
-      _$.api.grade_correct();
+      _$.api.grade_correct({ submission: options.submission });
     }
     else {
-      _$.api.grade_incorrect();
+      _$.api.grade_incorrect({ submission: options.submission });
     }
 
-    m$.results.api.update_last_score({ submission: options.submission });
     _$.api.next_card();
   }, 
 
@@ -149,6 +148,7 @@ m$.quizzer.api({
     this.number_correct++;
     m$.navigation.api.toggle_class({ classname: "correct" });
     _$.api.toggle_submission_class({ classname: "correct" });
+    m$.results.api.update_last_score({ submission: options.submission, correct: true });
   },
 
   grade_incorrect: function(_$, options) {
@@ -156,6 +156,7 @@ m$.quizzer.api({
     this.number_incorrect++;
     m$.navigation.api.toggle_class({ classname: "incorrect" });
     _$.api.toggle_submission_class({ classname: "incorrect" });
+    m$.results.api.update_last_score({ submission: options.submission, correct: false });
   },
 
   toggle_submission_class: (_$, options) => {

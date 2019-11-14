@@ -38,16 +38,30 @@ m$.results.api({
       return emoji;
     }
 
-    this.ReportCard.prototype.answer_keys = function() {
-      var html = ""
+    this.ReportCard.prototype.answer_keys = function(options) {
+      var html = "";
+
       this.answer_key.forEach(key => {
-        html += `
-          <tr>
-            <td>${key[0].question}</td>
-            <td>${key[1] || "(No response)"}</td>
-            <td>${key[0].answer}</td>
-          </tr>
-        `
+        var correct,
+          question,
+          answer_provided,
+          actual_answer;
+
+        [correct, question, answer_provided, actual_answer] =
+          [key[2], key[0].question, key[1], key[0].answer];
+
+        if (
+             (correct && (!options || options.filter == "correct"))
+          || (!correct && (!options || options.filter == "incorrect"))
+        ) {
+          html += `
+            <tr>
+              <td>${question}</td>
+              <td>${answer_provided || "(No response)"}</td>
+              <td>${actual_answer}</td>
+            </tr>
+          `
+        }
       });
       return html;
     }
@@ -72,7 +86,7 @@ m$.results.api({
     score.incorrect = m$.quizzer.number_incorrect; 
     card            = JSON.parse(JSON.stringify(m$.quizzer.card));
 
-    score.answer_key.push([card, options.submission]);
+    score.answer_key.push([card, options.submission, options.correct]);
   },
 
   finalize_last_score: function(_$, options) {
@@ -104,13 +118,16 @@ m$.results.api({
               <table>
                 <thead>
                   <tr>
+                    <th colspan="3"><em>Here's what you missed</em></th>
+                  </tr>
+                  <tr>
                     <th>Question</th>
                     <th>You answered</th>
                     <th>Correct response</th> 
                   </tr>
                 </thead>
                 <tbody>
-    ` + score.answer_keys()
+    ` + score.answer_keys({ filter: "incorrect" })
       + `</tbody></table></td></tr></tbody></table>`
       + tables.innerHTML;
   }
