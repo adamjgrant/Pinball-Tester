@@ -40,13 +40,13 @@ m$.results.api({
     this.scores.push(score);
     
     tbody = _$("table tbody")[0];
-    tbody.innerHTML += `
+    tbody.innerHTML = `
       <tr>
         <td>${score.time()}</td>
         <td>${score.correct}</td>
         <td>${score.incorrect}</td>
         <td>${score.percent_grade()}</td>
       </tr>
-    `
+    ` + tbody.innerHTML;
   }
 });

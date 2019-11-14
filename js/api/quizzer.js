@@ -14,6 +14,7 @@ m$.quizzer.api({
 
     _$.api.toggle_tabs({ from: "results", to: "quiz" });
     _$.api.next_card(); 
+    m$.navigation.api.disable_tab_by_name({ name: "settings" });
   }, 
 
   next_card: function(_$, options) { 
@@ -144,5 +145,6 @@ m$.quizzer.api({
     _$.api.stop_quiz();    
     m$.results.api.register_new_score();
     _$.api.toggle_tabs({ from: "quiz", to: "results" });
+    m$.navigation.api.enable_tab_by_name({ name: "settings" });
   }
 });

@@ -1,0 +1,7 @@
+[data-component="results"] table {
+  margin: 25px 0;
+}
+
+[data-component="results"] table td, table th {
+  text-align: left;
+}

@@ -11,6 +11,16 @@ m$.navigation.api({
     });
   },
 
+  disable_tab_by_name: (_$, options) => { 
+    var index = _$.api.get_tab_index_by_name({ name: options.name });
+    _$("a")[index].setAttribute("disabled", true);
+  },
+
+  enable_tab_by_name: (_$, options) => { 
+    var index = _$.api.get_tab_index_by_name({ name: options.name });
+    _$("a")[index].removeAttribute("disabled");
+  }, 
+
   set_tab_at_index_visible: (_$, options) => { 
     _$("a").forEach((el, index) => { 
       if (options.index == index) {

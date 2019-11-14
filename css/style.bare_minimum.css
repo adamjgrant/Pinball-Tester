@@ -55,3 +55,12 @@ html {
   width: var(--width);
   position: absolute;
 }
+
+button {
+  background: var(--blue);
+  border-radius: 5px;
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  cursor: pointer;
+}

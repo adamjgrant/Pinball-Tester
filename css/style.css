@@ -1,9 +1,18 @@
 @import 'quizzer/style.css';
 @import 'tab_pane/style.css';
 @import 'navigation/style.css';
+@import 'results/style.css';
 
 html {
   font-size: 16px;
+}
+
+.help {
+  font-style: italic;
+  font-size: 0.75rem;
+  display: block;
+  opacity: 0.5;
+  margin-top: 6px;
 }
 
 /* Make sure this is last */

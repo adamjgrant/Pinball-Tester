@@ -3,6 +3,8 @@
   padding: 25px;
   height: calc(100vh - 60px);
   overflow: auto;
+  max-width: 700px;
+  margin: 0px auto;
 }
 
 [data-component="tab_pane"] article.active {
