@@ -65,7 +65,6 @@ m$.quizzer.api({
         `; 
 
     setTimeout(() => { document.body.innerHTML += css; }, 1000 );
-    alert(height);
   },
 
   kill_card_timer: function(_$, options) {
