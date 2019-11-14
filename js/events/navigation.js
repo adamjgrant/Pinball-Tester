@@ -1,5 +1,5 @@
 m$.navigation.events(_$ => {
-  _$("button")[0].addEventListener("click", m$.quizzer.api.start_quiz); 
+  // _$("button")[0].addEventListener("click", m$.quizzer.api.start_quiz); 
 
   _$("a").forEach((el, index) => {
     ((el, index) => {
