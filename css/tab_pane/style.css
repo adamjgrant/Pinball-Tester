@@ -46,3 +46,7 @@
 [data-component="tab_pane"] .form_group {
   margin-bottom: 60px;
 }
+
+[data-component="tab_pane"] input[type='range'] {
+  width: 100%;
+}
