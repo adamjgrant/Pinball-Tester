@@ -2,10 +2,11 @@ m$.results.api({
   init: function(_$, options) {
     this.scores = [];
     this.ReportCard = function(timestamp, correct, incorrect, total) {
-      this.timestamp = timestamp;
-      this.correct   = correct;
-      this.incorrect = incorrect;
-      this.total     = total;
+      this.timestamp  = timestamp;
+      this.correct    = correct;
+      this.incorrect  = incorrect;
+      this.total      = total;
+      this.answer_key = [];
     };
 
     this.ReportCard.prototype.percent_grade = function() {
@@ -36,17 +37,42 @@ m$.results.api({
 
       return emoji;
     }
+
+    this.ReportCard.prototype.answer_keys = function() {
+      var html = ""
+      this.answer_key.forEach(key => {
+        html += `
+          <tr>
+            <td>${key[0].question}</td>
+            <td>${key[1] || "(No response)"}</td>
+            <td>${key[0].answer}</td>
+          </tr>
+        `
+      });
+      return html;
+    }
   },
 
   register_new_score: function(_$, options) {
-    score = new this.ReportCard(new Date().getTime(), 0, 0, 0)
+    var score = new this.ReportCard(
+      new Date().getTime(), 
+      0, 
+      0, 
+      m$.settings.slides_per_session
+    )
+    this.scores.push(score);
   },
 
   update_last_score: function(_$, options) {
-    var score = this.scores[this.scores.length - 1]; 
+    var score,
+        card;
+
+    score           = this.scores[this.scores.length - 1]; 
     score.correct   = m$.quizzer.number_correct;
     score.incorrect = m$.quizzer.number_incorrect; 
-    score.total     = m$.settings.slides_per_session;
+    card            = JSON.parse(JSON.stringify(m$.quizzer.card));
+
+    score.answer_key.push([card, options.submission]);
   },
 
   finalize_last_score: function(_$, options) {
@@ -62,6 +88,19 @@ m$.results.api({
         <td>${score.incorrect}</td>
         <td>${score.percent_grade()}</td>
       </tr>
-    ` + tbody.innerHTML;
+      <tr>
+        <td colspan="4">
+          <table>
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th>You answered</th>
+                <th>Correct response</th> 
+              </tr>
+            </thead>
+            <tbody>
+    ` + score.answer_keys()
+      + `</tbody></table></td></tr>`
+      + tbody.innerHTML;
   }
 });

@@ -13,6 +13,7 @@ m$.quizzer.api({
     this.time_remaining_in_seconds = 0;
 
     _$.api.toggle_tabs({ from: "results", to: "quiz" });
+    m$.results.api.register_new_score();
     _$.api.next_card(); 
     m$.navigation.api.disable_tab_by_name({ name: "settings" });
   }, 
@@ -22,7 +23,7 @@ m$.quizzer.api({
 
     if (this.slides_completed >= m$.settings.slides_per_session) {
       return _$.api.finish_session();
-    } 
+    }
 
     if (m$.settings.quiz_type == "numbers") { 
       [this.card.question, this.card.answer] = this.deck.pop(); 
@@ -127,6 +128,7 @@ m$.quizzer.api({
       _$.api.grade_incorrect();
     }
 
+    m$.results.api.update_last_score({ submission: options.submission });
     _$.api.next_card();
   }, 
 
@@ -143,7 +145,7 @@ m$.quizzer.api({
 
   finish_session: function(_$, options) {
     _$.api.stop_quiz();    
-    m$.results.api.register_new_score();
+    m$.results.api.finalize_last_score();
     _$.api.toggle_tabs({ from: "quiz", to: "results" });
     m$.navigation.api.enable_tab_by_name({ name: "settings" });
   }
