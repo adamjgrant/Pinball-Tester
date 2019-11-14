@@ -9,6 +9,10 @@ html {
   font-family: 'Nunito', sans-serif;
 }
 
+body {
+  overflow: hidden;
+}
+
 .help {
   font-style: italic;
   font-size: 0.75rem;
