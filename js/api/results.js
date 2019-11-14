@@ -18,11 +18,11 @@ m$.results.api({
           timestamp;
 
       date      = new Date(Math.round(new Date().getTime() / 1000) * 1000);
-      timestamp = [date.getHours(), date.getMinutes(), date.getSeconds()].map(function (val) {
+      timestamp = [date.getHours(), date.getMinutes()].map(function (val) {
         return `${String(val).padStart(2, '0')}`;
       }).join(":");
 
-      return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()} ${timestamp}`;
+      return `${date.getMonth() + 1}/${date.getDate()} ${timestamp}`;
     }
 
     this.ReportCard.prototype.emoji = function() {
@@ -76,31 +76,42 @@ m$.results.api({
   },
 
   finalize_last_score: function(_$, options) {
-    var tbody, 
+    var tables, 
         score;
     
     score = this.scores[this.scores.length - 1];
-    tbody = _$("table tbody")[0];
-    tbody.innerHTML = `
-      <tr>
-        <td>${score.emoji()} ${score.time()}</td>
-        <td>${score.correct}</td>
-        <td>${score.incorrect}</td>
-        <td>${score.percent_grade()}</td>
-      </tr>
-      <tr>
-        <td colspan="4">
-          <table>
-            <thead>
-              <tr>
-                <th>Question</th>
-                <th>You answered</th>
-                <th>Correct response</th> 
-              </tr>
-            </thead>
-            <tbody>
+    tables = _$(".tables")[0];
+    tables.innerHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Correct</th>
+            <th>Incorrect</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+          <tr>
+            <td>${score.emoji()} ${score.time()}</td>
+            <td>${score.correct}</td>
+            <td>${score.incorrect}</td>
+            <td>${score.percent_grade()}</td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Question</th>
+                    <th>You answered</th>
+                    <th>Correct response</th> 
+                  </tr>
+                </thead>
+                <tbody>
     ` + score.answer_keys()
-      + `</tbody></table></td></tr>`
-      + tbody.innerHTML;
+      + `</tbody></table></td></tr></tbody></table>`
+      + tables.innerHTML;
   }
 });

@@ -11,10 +11,16 @@
   display: block;
 }
 
+[data-component="tab_pane"] .header_bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
 [data-component="tab_pane"] article h1 {
    margin: 0;
-   margin-bottom: 15px;
-   font-size: 1.8rem;
+   font-size: 2.5rem;
 }
 
 [data-component="tab_pane"] table {

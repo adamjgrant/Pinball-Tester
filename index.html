@@ -9,7 +9,10 @@
     <main data-component="tab_pane">
       <img class="loading" alt="loading" src="img/loading.gif" />
       <article data-component="settings" class="settings active">
-        <h1>Settings</h1>
+        <div class="header_bar">
+          <h1>Settings</h1>
+          <button>New Quiz</button>
+        </div>
         <table>
           <tbody>
             <tr>
@@ -35,7 +38,6 @@
             </tr>
           </tbody>
         </table>
-        <button>New Quiz</button>
         <!--p class="help">Or press space</p-->
       </article>
       <article data-component="quizzer">
@@ -56,21 +58,12 @@
         </div> 
       </article>
       <article data-component="results" class="results">
-        <h1>Results</h1>
-        <button>New Quiz</button>
+        <div class="header_bar">
+          <h1>Results</h1>
+          <button>New Quiz</button>
+        </div>
         <!--p class="help">Or press space</p-->
-        <table>
-          <thead>
-            <tr>
-              <th>Time</th>
-              <th>Correct</th>
-              <th>Incorrect</th>
-              <th>Grade</th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
+        <div class="tables"></div>
       </article>
     </main>
     <nav data-component="navigation">

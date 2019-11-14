@@ -6,6 +6,12 @@
   margin: 25px 0;
 }
 
-[data-component="results"] table td, table th {
+[data-component="results"] table td, 
+[data-component="results"] table th {
   text-align: left;
+}
+
+[data-component="results"] table td:last-child, 
+[data-component="results"] table th:last-child {
+  text-align: right;
 }
