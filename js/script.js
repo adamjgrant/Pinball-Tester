@@ -111,56 +111,6 @@ const deck          = [
   ,['Pumpkin', 99]
 ]
 
-set_clock = function (_time) {
-	var clock_time;
-	clock_time = _time || time;
-	return clock.innerHTML = clock_time;
-};
-
-update_clock = function () {
-	return set_clock(convert_seconds_to_time(--time_remaining_in_seconds));
-};
-
-start_clock = function () {
-	update_clock();
-	return timer = setInterval(function () {
-		if (time_remaining_in_seconds > 0) {
-			return update_clock();
-		} else {
-			return clock_is_done();
-		}
-	}, 1000);
-};
-
-clock_is_done = function (correct_answer_given) {
-	clearInterval(timer);
-	if (correct_answer_given) {
-		++int_number_correct;
-		correct_answer_was.innerHTML = `Correct! (${response})`;
-	} else {
-		++int_number_incorrect;
-		correct_answer_was.innerHTML = `Expected '${response}'`;
-	}
-	answer.value = "";
-	if (int_slides_completed >= int_number_of_slides) {
-		session_is_done();
-		return initiate();
-	}
-	return start_session();
-};
-
-session_is_done = function () {
-	var date, now, quiz_type, timestamp;
-	date = new Date(Math.round(new Date().getTime() / 1000) * 1000);
-	timestamp = [date.getHours(), date.getMinutes(), date.getSeconds()].map(function (val) {
-		return `${String(val).padStart(2, '0')}`;
-	}).join(":");
-	now = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()} ${timestamp}`;
-	quiz_type = quiz_numbers ? "Numbers" : "Names";
-	scores.querySelector("tbody").innerHTML += `<tr><td>${quiz_type}: ${now}</td><td>${time}</td><td>${int_number_of_slides}</td><td>${Math.ceil(int_number_correct / int_number_of_slides * 100)}%</td></tr>`;
-	return initiate();
-};
-
 initiate = function () {
 	set_speed(speed_setter.value);
 	set_clock();

@@ -48,23 +48,6 @@ m$.quizzer.api({
 
   focus_input: (_$, options) => { 
     _$("input")[0].focus();
-    var height2 = function () {
-      var sx = document.body.scrollLeft, sy = document.body.scrollTop;
-      var naturalHeight = window.innerHeight;
-      window.scrollTo(sx, document.body.scrollHeight);
-      var keyboardHeight = naturalHeight - window.innerHeight;
-      window.scrollTo(sx, sy);
-      return keyboardHeight;
-    };
-
-    var height = window.screen.availHeight;
-        css    =`
-          <style>[data-component="tab_pane"] article {
-            max-height: calc(${height2}px - 60px);
-          }</style>
-        `; 
-
-    setTimeout(() => { document.body.innerHTML += css; }, 1000 );
   },
 
   kill_card_timer: function(_$, options) {
