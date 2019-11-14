@@ -24,6 +24,19 @@ m$.results.api({
 
       return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()} ${timestamp}`;
     }
+
+    this.ReportCard.prototype.emoji = function() {
+      var emojis = ["🍾","🟢","🟡","🟠","🔴"],
+          emoji  = emojis[0],
+          raw_percent_grade = this.correct/this.total * 100;
+
+      if (raw_percent_grade < 85) emoji = emojis[1];
+      if (raw_percent_grade < 75) emoji = emojis[2];
+      if (raw_percent_grade < 65) emoji = emojis[3];
+      if (raw_percent_grade < 55) emoji = emojis[4];
+
+      return emoji;
+    }
   },
 
   register_new_score: function(_$, options) {
@@ -42,7 +55,7 @@ m$.results.api({
     tbody = _$("table tbody")[0];
     tbody.innerHTML = `
       <tr>
-        <td>${score.time()}</td>
+        <td>${score.emoji()} ${score.time()}</td>
         <td>${score.correct}</td>
         <td>${score.incorrect}</td>
         <td>${score.percent_grade()}</td>
