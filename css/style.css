@@ -15,6 +15,12 @@ html {
   margin-top: 6px;
 }
 
+html,body{
+  -webkit-overflow-scrolling : touch !important;
+  overflow: auto !important;
+  height: 100% !important;
+}
+
 /* Make sure this is last */
 .loading {
   display: none;
