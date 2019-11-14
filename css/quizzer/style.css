@@ -23,7 +23,8 @@
   padding: 11px 8px;
   border: none;
   background: transparent;
-  margin-bottom: -42px;
+  margin-bottom: -47px;
+  font-size: 1.2rem;
 }
 
 [data-component="quizzer"] .submission:focus {

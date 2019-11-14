@@ -49,3 +49,9 @@
 [data-component="navigation"].incorrect {
   animation-name: flash_incorrect;
 }
+
+[data-component="navigation"] button {
+  background: white;
+  color: var(--blue);
+  margin-top: 6px;
+}
