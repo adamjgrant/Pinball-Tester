@@ -48,7 +48,7 @@ m$.quizzer.api({
 
   focus_input: (_$, options) => { 
     _$("input")[0].focus();
-    var height2 = var virtualKeyboardHeight = function () {
+    var height2 = function () {
       var sx = document.body.scrollLeft, sy = document.body.scrollTop;
       var naturalHeight = window.innerHeight;
       window.scrollTo(sx, document.body.scrollHeight);
