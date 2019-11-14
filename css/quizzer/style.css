@@ -1,11 +1,9 @@
 [data-component="quizzer"] .quiz {
-  height: 100%;
-}
-
-[data-component="quizzer"] .quiz {
+  height: 50%;
   display: flex;
   flex-direction: column-reverse;
   align-items: stretch;
+  justify-content: flex-end;
 }
 
 [data-component="quizzer"] .display {
