@@ -19,10 +19,70 @@
 
 [data-component="quizzer"] .submission {
   border-radius: 5px;
-  padding: 5px 3px;
-  border: 1px solid white;
+  padding: 10px 8px;
+  border: none;
+  background: transparent;
+  margin-bottom: -40px;
+}
+
+[data-component="quizzer"] .submission:focus {
+  border: 0;
+  outline-color: #BBB;
+  box-shadow: none;
 }
 
 [data-component="quizzer"] .clock {
   display: none;
+}
+
+[data-component="quizzer"] .progress {
+  padding: 0;
+  width: 100%;
+  height: 25px;
+  overflow: hidden;
+  background: white;
+  border-radius: 5px;
+}
+
+[data-component="quizzer"] .bar { 
+  float: left;
+  min-width: 1%;
+  height: 100%;
+  background: var(--blue);
+  transition: width 1s;
+  opacity: 0.25;
+}
+
+[data-component="quizzer"] .progress.card {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+[data-component="quizzer"] .progress.session {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+@keyframes flash_correct {
+  0%   { background: var(--blue); }
+  100% { background: var(--green);  }
+}
+
+@keyframes flash_incorrect {
+  0%   { background: var(--blue); }
+  100% { background: var(--red);  }
+}
+
+[data-component="quizzer"] .submission {
+  animation-direction: alternate;
+  animation-iteration-count: 2;
+  animation-duration: 0.25s;
+}
+
+[data-component="quizzer"] .submission.correct {
+  animation-name: flash_correct;
+}
+
+[data-component="quizzer"] .submission.incorrect {
+  animation-name: flash_incorrect;
 }

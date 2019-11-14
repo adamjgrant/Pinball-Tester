@@ -36,9 +36,19 @@ m$.quizzer.api({
 
     _$(".display")[0].innerHTML = this.card.question;
     _$(".submission")[0].value = "";
-    _$("progress.session")[0].value = this.slides_completed <= 0 ? 0 : (this.slides_completed/m$.settings.slides_per_session) * 100;
+
+    _$.api.update_progress_bar({
+      classname: "session",
+      value: this.slides_completed <= 0 ? 0 : (this.slides_completed/m$.settings.slides_per_session) * 100
+    });
+
     _$.api.focus_input();
     _$.api.reset_card_timer();
+  },
+
+  update_progress_bar: (_$, options) => {
+    var bar = _$(`.progress.${options.classname} .bar`)[0]
+    bar.style.width = `${options.value}%`;
   },
 
   stop_quiz: (_$, options) => {
@@ -99,7 +109,10 @@ m$.quizzer.api({
       percent_complete = 100;
     }
 
-    _$("progress.card")[0].value = percent_complete;
+    _$.api.update_progress_bar({
+      classname: "card",
+      value: percent_complete
+    });
   },
 
   validate_character: (_$, options) => { 
@@ -135,12 +148,22 @@ m$.quizzer.api({
   grade_correct: function(_$, options) {
     this.number_correct++;
     m$.navigation.api.toggle_class({ classname: "correct" });
+    _$.api.toggle_submission_class({ classname: "correct" });
   },
 
   grade_incorrect: function(_$, options) {
     console.info("Should be", this.card.answer);
     this.number_incorrect++;
     m$.navigation.api.toggle_class({ classname: "incorrect" });
+    _$.api.toggle_submission_class({ classname: "incorrect" });
+  },
+
+  toggle_submission_class: (_$, options) => {
+    var sub = _$(".submission")[0]
+    sub.classList.add(options.classname);
+    setTimeout(() => {
+      sub.classList.remove(options.classname);
+    }, 300);
   },
 
   finish_session: function(_$, options) {
