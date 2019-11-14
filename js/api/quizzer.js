@@ -55,6 +55,7 @@ m$.quizzer.api({
           }</style>
         `;
     document.body.innerHTML += css;
+    alert(height);
   },
 
   kill_card_timer: function(_$, options) {
