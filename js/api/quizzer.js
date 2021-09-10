@@ -166,6 +166,9 @@ m$.quizzer.api({
     force_grade: function(_$, options) {
         if (options.correct) {
             _$.api.grade_correct({ submission: String(this.card.answer) });
+            m$.after_trust_message.api.set_trusted_answer({
+                answer: String(this.card.answer)
+            })
         } else {
             _$.api.grade_incorrect({ submission: "(Trust mode)" });
         }

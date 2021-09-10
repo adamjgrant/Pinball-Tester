@@ -74,11 +74,11 @@
                 <p class="clock"></p>
             </div>
 
-            <div class="after-trust-message">
+            <div data-component="after_trust_message" class="hide">
                 <p>Trusting: "<span class="trusted-answer"></span>"</p>
                 <p>
                     <a href="#">Oops, grade it wrong</a>
-                    <span class="hide">Graded wrong.</span>
+                    <span class="graded-wrong-message hide">Graded wrong.</span>
                 </p>
             </div>
             <button class="trust trust-incorrect" id="trust-incorrect">⨉</button>
@@ -133,6 +133,9 @@
 
     <script src="js/api/results.js"></script>
     <script src="js/events/results.js"></script>
+
+    <script src="js/api/after_trust_message.js"></script>
+    <script src="js/events/after_trust_message.js"></script>
 
     <script>
         Mozart.init();
