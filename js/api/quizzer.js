@@ -16,6 +16,7 @@ m$.quizzer.api({
         m$.results.api.register_new_score();
         _$.api.next_card();
         m$.navigation.api.disable_tab_by_name({ name: "settings" });
+        m$.after_trust_message.api.hide_and_reset();
     },
 
     flip_trust_mode: function(_$, options) {
@@ -171,8 +172,15 @@ m$.quizzer.api({
             })
         } else {
             _$.api.grade_incorrect({ submission: "(Trust mode)" });
+            m$.after_trust_message.api.hide_and_reset();
         }
         _$.api.next_card();
+    },
+
+    force_previous_grade_incorrect: function(_$, options) {
+        this.number_correct--;
+        this.number_incorrect++;
+        m$.results.api.update_penultimate_score({ submission: "(Trust mode)", correct: false });
     },
 
     toggle_submission_class: (_$, options) => {
