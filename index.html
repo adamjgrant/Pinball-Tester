@@ -1,84 +1,113 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
+
+<head>
     <link rel="stylesheet" href="css/style.bare_minimum.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
     <meta charset="utf-8">
-  </head>
-  <body>
-    <main data-component="tab_pane">
-      <img class="loading" alt="loading" src="img/loading.gif" />
-      <article data-component="settings" class="settings active">
-        <div class="header_bar">
-          <h1>Settings</h1>
-          <button>New Quiz</button>
-        </div>
+</head>
 
-        <div class="form_group">
-          <h2>Quiz Type</h2>
-          <label>
+<body>
+    <main data-component="tab_pane">
+        <img class="loading" alt="loading" src="img/loading.gif" />
+        <article data-component="settings" class="settings active">
+            <div class="header_bar">
+                <h1>Settings</h1>
+                <button>New Quiz</button>
+            </div>
+
+            <div class="form_group">
+                <h2>Quiz Type</h2>
+                <label>
             <input type="radio" name="quiz_type" value="numbers">
             Numbers
           </label>
-          <label>
+                <label>
             <input type="radio" name="quiz_type" value="names">
             Names
           </label>
-        </div>
+            </div>
 
-        <div class="form_group">
-          <h2>Slides per Session</h2>
-          <input type="number">
-        </div>
+            <div class="form_group">
+                <label>
+            <input type="checkbox" name="trust-mode" checked="true">
+            Trust Mode
+            <p>
+              <em>Go through the quiz quickly without needing to enter in any data. 
+                Look at the question and think the answer to yourself. Then just
+                mark if you got it right.
+              </em>
+            </p>
+            <p>
+              <em>If you don't respond after the time limit, the quiz 
+                assumes you couldn't think of the right answer.</em>
+            </p>
+          </label>
+            </div>
 
-        <div class="form_group">
-          <h2>Difficulty Level</h2>
-          <input type="range" min=75 max=100>
-          <p><span class="speed_readout"></span> per card</p>
-        </div>
+            <div class="form_group">
+                <h2>Slides per Session</h2>
+                <input type="number">
+            </div>
 
-      </article>
-      <article data-component="quizzer">
-        <div class="quiz">
-          <div class="display">Quiz Item</div>
+            <div class="form_group">
+                <h2>Difficulty Level</h2>
+                <input type="range" min=75 max=100>
+                <p><span class="speed_readout"></span> per card</p>
+            </div>
 
-          <div class="progress card">
-            <div class="bar" style="width: 0%"></div>
-          </div>
+        </article>
+        <article data-component="quizzer" data-show-trust-mode="true">
+            <div class="quiz">
+                <div class="display">Quiz Item</div>
 
-          <div class="progress session">
-            <div class="bar" style="width: 0%"></div>
-          </div>
+                <div class="progress card">
+                    <div class="bar" style="width: 0%"></div>
+                </div>
 
-					<input class="submission" type="number" placeholder="Type and press enter">
-          
-          <p class="clock"></p>
-        </div> 
-      </article>
-      <article data-component="results" class="results">
-        <div class="header_bar">
-          <h1>Results</h1>
-          <button>New Quiz</button>
-        </div>
-        <!--p class="help">Or press space</p-->
-        <div class="tables"></div>
-      </article>
+                <div class="progress session">
+                    <div class="bar" style="width: 0%"></div>
+                </div>
+
+                <input class="submission" type="number" placeholder="Type and press enter">
+
+                <p class="clock"></p>
+            </div>
+
+            <div data-component="after_trust_message" class="hide">
+                <p>Trusting: "<span class="trusted-answer"></span>"</p>
+                <p>
+                    <a href="#">Oops, grade it wrong</a>
+                    <span class="graded-wrong-message hide">Graded wrong.</span>
+                </p>
+            </div>
+            <button class="trust trust-incorrect" id="trust-incorrect">⨉</button>
+            <button class="trust trust-correct" id="trust-correct">✔</button>
+        </article>
+        <article data-component="results" class="results">
+            <div class="header_bar">
+                <h1>Results</h1>
+                <button>New Quiz</button>
+            </div>
+            <!--p class="help">Or press space</p-->
+            <div class="tables"></div>
+        </article>
     </main>
     <nav data-component="navigation">
-      <ul>
-        <li class="settings">
-          <a class="active" href="#settings">Settings</a>
-        </li>
-        <li class="quizzer invisible">
-          <a href="#quizzer">Quiz</a>
-        </li>
-        <li class="results">
-          <a href="#results">Results</a>
-        </li>
-        <!--li class="new_quiz">
+        <ul>
+            <li class="settings">
+                <a class="active" href="#settings">Settings</a>
+            </li>
+            <li class="quizzer invisible">
+                <a href="#quizzer">Quiz</a>
+            </li>
+            <li class="results">
+                <a href="#results">Results</a>
+            </li>
+            <!--li class="new_quiz">
           <button>New Quiz</button>
         </li-->
-      </ul>
+        </ul>
     </nav>
 
     <link rel="stylesheet" href="css/normalize.css" />
@@ -105,7 +134,13 @@
     <script src="js/api/results.js"></script>
     <script src="js/events/results.js"></script>
 
-    <script>Mozart.init();</script>
+    <script src="js/api/after_trust_message.js"></script>
+    <script src="js/events/after_trust_message.js"></script>
+
+    <script>
+        Mozart.init();
+    </script>
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
-  </body>
+</body>
+
 </html>

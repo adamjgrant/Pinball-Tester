@@ -3,25 +3,27 @@
 @import 'navigation/style.css';
 @import 'settings/style.css';
 @import 'results/style.css';
-
+@import 'after_trust_message/style.css';
 html {
-  font-size: 16px;
-  font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-family: 'Nunito', sans-serif;
 }
 
 body {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .help {
-  font-style: italic;
-  font-size: 0.75rem;
-  display: block;
-  opacity: 0.5;
-  margin-top: 6px;
+    font-style: italic;
+    font-size: 0.75rem;
+    display: block;
+    opacity: 0.5;
+    margin-top: 6px;
 }
 
+
 /* Make sure this is last */
+
 .loading {
-  display: none;
+    display: none;
 }
