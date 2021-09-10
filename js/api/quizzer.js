@@ -163,6 +163,15 @@ m$.quizzer.api({
         m$.results.api.update_last_score({ submission: options.submission, correct: false });
     },
 
+    force_grade: function(_$, options) {
+        if (options.correct) {
+            _$.api.grade_correct({ submission: String(this.card.answer) });
+        } else {
+            _$.api.grade_incorrect({ submission: "(Trust mode)" });
+        }
+        _$.api.next_card();
+    },
+
     toggle_submission_class: (_$, options) => {
         var sub = _$(".submission")[0]
         sub.classList.add(options.classname);
