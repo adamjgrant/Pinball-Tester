@@ -63,6 +63,7 @@ m$.quizzer.api({
     },
 
     focus_input: (_$, options) => {
+        if (m$.settings.api.is_in_trust_mode()) return;
         _$("input")[0].focus();
     },
 

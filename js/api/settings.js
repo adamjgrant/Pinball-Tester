@@ -41,6 +41,10 @@ m$.settings.api({
         m$.quizzer.api.flip_trust_mode(options);
     },
 
+    is_in_trust_mode: function(_$, options) {
+        return m$.settings.api.get_cache({ key: "trust_mode" }) === true;
+    },
+
     set_defaults: function(_$, options) {
         var difficulty,
             slides_per_session,
