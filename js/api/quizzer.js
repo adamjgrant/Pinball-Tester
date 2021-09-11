@@ -76,6 +76,7 @@ m$.quizzer.api({
 
     start_card_timer: function(_$, options) {
         this.timer = setInterval(() => {
+            m$.after_trust_message.api.hide_and_reset();
             _$.api.submit()
         }, m$.settings.speed_in_seconds * 1000);
         _$.api.reset_clock_display_timer();
