@@ -110,7 +110,7 @@ m$.results.api({
         score = this.scores[this.scores.length - 1];
         tables = _$(".tables")[0];
         tables.innerHTML = `
-      <table>
+      <div class="result"><table>
         <thead>
           <tr>
             <th>Time</th>
@@ -142,7 +142,7 @@ m$.results.api({
                 </thead>
                 <tbody>
     ` + score.answer_keys({ filter: "incorrect" }) +
-            `</tbody></table></td></tr></tbody></table>` +
+            `</tbody></table></td></tr></tbody></table></div>` +
             tables.innerHTML;
     }
 });

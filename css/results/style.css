@@ -1,13 +1,26 @@
 [data-component="results"] table {
-  margin: 25px 0;
+    margin: 25px 0;
 }
 
-[data-component="results"] table td, 
+[data-component="results"] table td,
 [data-component="results"] table th {
-  text-align: left;
+    text-align: left;
 }
 
-[data-component="results"] table td:last-child, 
+[data-component="results"] table td:last-child,
 [data-component="results"] table th:last-child {
-  text-align: right;
+    text-align: right;
+}
+
+[data-component="results"] .result {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-bottom: 15px;
+}
+
+[data-component="results"] .result table {
+    margin: 0;
 }
