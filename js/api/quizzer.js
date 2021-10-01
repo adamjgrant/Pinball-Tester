@@ -71,11 +71,16 @@ m$.quizzer.api({
     stop_quiz: (_$, options) => {
         _$.api.kill_card_timer();
         _$.api.kill_clock_display_timer();
+        _$.api.unfocus_input();
     },
 
     focus_input: (_$, options) => {
         if (m$.settings.api.is_in_trust_mode()) return;
         _$("input")[0].focus();
+    },
+
+    unfocus_input: (_$, options) => {
+        _$("input")[0].blur();
     },
 
     kill_card_timer: function(_$, options) {
