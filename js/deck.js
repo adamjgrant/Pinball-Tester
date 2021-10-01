@@ -128,6 +128,16 @@ const deck = `
   Cocktail cart 127
   Couch 128
   Bed 129
+  Coaster 130
+  Vase 131
+  Alarm clock 132
+  Tray 133
+  Picture frame 134
+  Sleep mask 135
+  Trophy 136
+  Basket 137
+  Pillow 138
+  Blanket 139
 `.split("\n")
     .filter(i => i !== '')
     .map(i => i.trim())
