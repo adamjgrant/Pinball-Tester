@@ -12,6 +12,12 @@ m$.quizzer.api({
         this.clock_display_timer = 0;
         this.time_remaining_in_seconds = 0;
 
+        // Bringing this value in here to work with "choose for me"
+        this.session_quiz_type = m$.settings.quiz_type;
+        if (this.session_quiz_type === "pick_one") {
+            this.session_quiz_type = Math.random() >= .5 ? "names" : "numbers";
+        }
+
         _$.api.toggle_tabs({ from: "results", to: "quiz" });
         m$.results.api.register_new_score();
         _$.api.next_card();
@@ -32,7 +38,7 @@ m$.quizzer.api({
             return _$.api.finish_session();
         }
 
-        if (m$.settings.quiz_type == "numbers") {
+        if (this.session_quiz_type == "numbers") {
             [this.card.question, this.card.answer] = this.deck.pop();
             _$(".submission")[0].type = "number";
         } else {
