@@ -117,5 +117,15 @@ const deck = [
     ['Blender', 116],
     ['Kettle', 117],
     ['Microwave', 118],
-    ['Fridge', 119]
+    ['Fridge', 119],
+    ['Table', 120],
+    ['Lamp', 121],
+    ['Dresser', 122],
+    ['Coat rack', 123],
+    ['Chair', 124],
+    ['Trash can', 125],
+    ['Safe', 126],
+    ['Cocktail cart', 127],
+    ['Couch', 128],
+    ['Bed', 129]
 ]
