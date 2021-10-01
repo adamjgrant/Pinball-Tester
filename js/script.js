@@ -128,3 +128,8 @@ document.querySelectorAll("input").forEach((el) => {
         });
     })(el)
 });
+
+// Prevent double-tap to zoom.
+document.addEventListener('gesturestart', function(e) {
+    e.preventDefault();
+});
