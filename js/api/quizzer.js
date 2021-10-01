@@ -38,14 +38,19 @@ m$.quizzer.api({
             return _$.api.finish_session();
         }
 
-        if (this.session_quiz_type == "numbers") {
-            [this.card.question, this.card.answer] = this.deck.pop();
-            _$(".submission")[0].type = "number";
-        } else {
-            [this.card.answer, this.card.question] = this.deck.pop();
-            _$(".submission")[0].type = "text";
+        let submission_type = "number";
+        const randomly_choose_names_for_this_card = this.session_quiz_type === "mixed_and_random" && Math.random() >= .5;
+        if (this.session_quiz_type === "names" || randomly_choose_names_for_this_card) {
+            submission_type = "text"
         }
 
+        if (submission_type === "number") {
+            [this.card.question, this.card.answer] = this.deck.pop();
+        } else {
+            [this.card.answer, this.card.question] = this.deck.pop();
+        }
+
+        _$(".submission")[0].type = submission_type;
         _$(".display")[0].innerHTML = this.card.question;
         _$(".submission")[0].value = "";
 
