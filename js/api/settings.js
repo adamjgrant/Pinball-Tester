@@ -49,6 +49,10 @@ m$.settings.api({
     },
 
     set_defaults: function(_$, options) {
+        const defaults = {
+            quiz_type: "pick_one"
+        };
+
         var difficulty,
             slides_per_session,
             quiz_type,
@@ -61,7 +65,7 @@ m$.settings.api({
 
         _$.api.set_difficulty({ difficulty: difficulty });
         _$.api.set_slides_per_session({ slides: Math.min(slides_per_session, deck.length) });
-        _$.api.set_quiz_type({ quiz_type: quiz_type });
+        _$.api.set_quiz_type({ quiz_type: quiz_type || defaults.quiz_type });
         _$.api.set_trust_mode({ enabled: (trust_mode === undefined ? true : trust_mode) });
     }
 });

@@ -4,7 +4,7 @@ m$.settings.events(_$ => {
     _$("input[type='radio']").forEach(el => {
         (el => {
             el.addEventListener("click", e => {
-                _$.api.set_quiz_type({ is_number_type: e.target.value == "numbers" });
+                _$.api.set_quiz_type({ quiz_type: e.target.value });
             });
         })(el)
     });
