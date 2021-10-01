@@ -1,12 +1,15 @@
 m$.settings.api({
     set_quiz_type: function(_$, options) {
-        _$("input[type='radio']")[0].checked = options.is_number_type;
-        _$("input[type='radio']")[1].checked = !options.is_number_type;
-        this.quiz_type = options.is_number_type ? "numbers" : "names";
+        _$("input[type='radio']")[0].checked = options.quiz_type == "numbers";
+        _$("input[type='radio']")[1].checked = options.quiz_type == "names";
+        _$("input[type='radio']")[2].checked = options.quiz_type == "pick_one";
+        _$("input[type='radio']")[3].checked = options.quiz_type == "mixed_and_random";
+
+        this.quiz_type = options.quiz_type;
 
         m$.settings.api.set_cache({
-            key: "is_number_type",
-            value: options.is_number_type
+            key: "quiz_type",
+            value: options.quiz_type
         });
     },
 
@@ -48,17 +51,17 @@ m$.settings.api({
     set_defaults: function(_$, options) {
         var difficulty,
             slides_per_session,
-            is_number_type,
+            quiz_type,
             trust_mode;
 
         difficulty = m$.settings.api.get_cache({ key: "difficulty" });
         slides_per_session = m$.settings.api.get_cache({ key: "slides_per_session" }) || deck.length;
-        is_number_type = m$.settings.api.get_cache({ key: "is_number_type" });
+        quiz_type = m$.settings.api.get_cache({ key: "quiz_type" });
         trust_mode = m$.settings.api.get_cache({ key: "trust_mode" });
 
         _$.api.set_difficulty({ difficulty: difficulty });
         _$.api.set_slides_per_session({ slides: Math.min(slides_per_session, deck.length) });
-        _$.api.set_quiz_type({ is_number_type: is_number_type });
+        _$.api.set_quiz_type({ quiz_type: quiz_type });
         _$.api.set_trust_mode({ enabled: (trust_mode === undefined ? true : trust_mode) });
     }
 });
