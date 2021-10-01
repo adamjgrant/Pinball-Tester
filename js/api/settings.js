@@ -50,7 +50,10 @@ m$.settings.api({
 
     set_defaults: function(_$, options) {
         const defaults = {
-            quiz_type: "pick_one"
+            quiz_type: "pick_one",
+            trust_mode: true,
+            slides_per_session: Math.min(20, deck.length),
+            difficulty: 50
         };
 
         var difficulty,
@@ -58,14 +61,14 @@ m$.settings.api({
             quiz_type,
             trust_mode;
 
-        difficulty = m$.settings.api.get_cache({ key: "difficulty" });
-        slides_per_session = m$.settings.api.get_cache({ key: "slides_per_session" }) || deck.length;
-        quiz_type = m$.settings.api.get_cache({ key: "quiz_type" });
-        trust_mode = m$.settings.api.get_cache({ key: "trust_mode" });
+        difficulty = m$.settings.api.get_cache({ key: "difficulty" }) || defaults.difficulty;
+        slides_per_session = m$.settings.api.get_cache({ key: "slides_per_session" }) || defaults.slides_per_session;
+        quiz_type = m$.settings.api.get_cache({ key: "quiz_type" }) || defaults.quiz_type;
+        trust_mode = m$.settings.api.get_cache({ key: "trust_mode" }) || defaults.trust_mode;
 
         _$.api.set_difficulty({ difficulty: difficulty });
         _$.api.set_slides_per_session({ slides: Math.min(slides_per_session, deck.length) });
-        _$.api.set_quiz_type({ quiz_type: quiz_type || defaults.quiz_type });
-        _$.api.set_trust_mode({ enabled: (trust_mode === undefined ? true : trust_mode) });
+        _$.api.set_quiz_type({ quiz_type: quiz_type });
+        _$.api.set_trust_mode({ enabled: trust_mode });
     }
 });
