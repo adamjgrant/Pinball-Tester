@@ -107,5 +107,15 @@ const deck = [
     ['Wallpaper', 106],
     ['Carpet', 107],
     ['Stone', 108],
-    ['Glass', 109]
+    ['Glass', 109],
+    ['Washer/Dryer', 110],
+    ['Outlet', 111],
+    ['Fan', 112],
+    ['Iron', 113],
+    ['Vacuum Cleaner', 114],
+    ['Toaster', 115],
+    ['Blender', 116],
+    ['Kettle', 117],
+    ['Microwave', 118],
+    ['Fridge', 119]
 ]
