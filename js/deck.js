@@ -138,6 +138,17 @@ const deck = `
   Basket 137
   Pillow 138
   Blanket 139
+  Globe 140
+  Bookmark 141
+  Book 142
+  Fireplace 143
+  Map 144
+  Glasses 145
+  Bookend 146
+  Ladder 147
+  Bust 148
+  Magnifying glass 149
+  Sink 150
 `.split("\n")
     .filter(i => i !== '')
     .map(i => i.trim())
