@@ -150,14 +150,18 @@ const deck = `
   Magnifying glass 149
   Sink 150
   Soap 151
-
-
-
-
-
+  Rubber ducky 152
+  Loofa 153
+  Toothbrush 154
+  Comb 155
+  Toothpaste
   Towel 157
   Toilet 158
   Toilet paper 159
+
+  Column 161
+
+  Chandelier 163
 `.split("\n")
     .map(i => i.trim())
     .filter(i => i !== '')
