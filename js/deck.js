@@ -154,7 +154,7 @@ const deck = `
   Loofa 153
   Toothbrush 154
   Comb 155
-  Toothpaste
+  Toothpaste 156
   Towel 157
   Toilet 158
   Toilet paper 159
