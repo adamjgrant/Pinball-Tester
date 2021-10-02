@@ -143,15 +143,24 @@ const deck = `
   Book 142
   Fireplace 143
   Map 144
-  Glasses 145
+  Bust 145
   Bookend 146
   Ladder 147
-  Bust 148
+  Glasses 148
   Magnifying glass 149
   Sink 150
+  Soap 151
+
+
+
+
+
+  Towel 157
+  Toilet 158
+  Toilet paper 159
 `.split("\n")
-    .filter(i => i !== '')
     .map(i => i.trim())
+    .filter(i => i !== '')
     .map(i => {
         const parts = i.split(" ");
         let tuple = [];
