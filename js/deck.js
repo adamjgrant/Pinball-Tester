@@ -158,7 +158,7 @@ const deck = `
   Towel 157
   Toilet 158
   Toilet paper 159
-
+  Chimney 160
   Column 161
 
   Chandelier 163
