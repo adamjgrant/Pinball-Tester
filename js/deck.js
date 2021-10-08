@@ -124,7 +124,7 @@ Alarm clock 121
 Dresser 122
 Coat rack 123
 Chair 124
-Trash can 125
+Pyjamas 125
 Sleep mask 126
 Blanket 127
 Pillow 128
@@ -152,30 +152,23 @@ Magnifying glass 149
 Sink 150
 Soap 151
 Rubber ducky 152
-Loofa 153
+Comb 153
 Toothbrush 154
-Comb 155
+Loofa 155
 Toothpaste 156
 Towel 157
 Toilet 158
 Toilet paper 159
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Computer Mouse 160
+Printer 164
+Computer keyboard 168
+Computer display 169
+Joystick 171
 Trophy 176
+Innertube 180
+Umbrella 181
+Washer/Dryer 190
+Basket 197
 `.split("\n")
     .map(i => i.trim())
     .filter(i => i !== '')
