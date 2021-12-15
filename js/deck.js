@@ -112,8 +112,8 @@ Glass 109
 Fan 110
 Outlet 111
 Mixer 112
-
-Table 114
+Table 113
+Wafflemaker 114
 Toaster 115
 Blender 116
 Kettle 117
@@ -122,7 +122,7 @@ Fridge 119
 
 Alarm clock 121
 Dresser 122
-Coat rack 123
+
 Chair 124
 Pyjamas 125
 Sleep mask 126
@@ -136,7 +136,7 @@ Tray 133
 Picture frame 134
 
 
-
+Coat rack 137
 Couch 138
 
 Globe 140
@@ -160,14 +160,42 @@ Towel 157
 Toilet 158
 Toilet paper 159
 Computer Mouse 160
+
+
+
 Printer 164
+
+
+
 Computer keyboard 168
 Computer display 169
+
 Joystick 171
+
+
+
+
 Trophy 176
+
+
+
 Innertube 180
 Umbrella 181
+
+
+
+
+
+
+
+
 Washer/Dryer 190
+
+
+
+
+
+
 Basket 197
 `.split("\n")
     .map(i => i.trim())
