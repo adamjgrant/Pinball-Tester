@@ -119,15 +119,15 @@ Blender 116
 Kettle 117
 Microwave 118
 Fridge 119
-
+Pillow 120
 Alarm clock 121
 Dresser 122
-
+Lamp 123
 Chair 124
 Pyjamas 125
 Sleep mask 126
 Blanket 127
-Pillow 128
+Slippers 128
 Bed 129
 Coaster 130
 Vase 131
@@ -197,6 +197,8 @@ Washer/Dryer 190
 
 
 Basket 197
+
+
 `.split("\n")
     .map(i => i.trim())
     .filter(i => i !== '')
