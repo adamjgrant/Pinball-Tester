@@ -135,17 +135,17 @@ Cocktail cart 132
 Tray 133
 Picture frame 134
 
-
+Fireplace 136
 Coat rack 137
-Couch 138
-
+Chandelier 138
+Couch 139
 Globe 140
 Bookmark 141
 Book 142
-Fireplace 143
+Bookend 143
 Map 144
 Bust 145
-Bookend 146
+Newspaper 146
 Ladder 147
 Glasses 148
 Magnifying glass 149
@@ -197,8 +197,6 @@ Washer/Dryer 190
 
 
 Basket 197
-
-
 `.split("\n")
     .map(i => i.trim())
     .filter(i => i !== '')
