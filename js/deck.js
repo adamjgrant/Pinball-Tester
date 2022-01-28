@@ -130,11 +130,11 @@ Blanket 127
 Slippers 128
 Bed 129
 Coaster 130
-Vase 131
+Candle 131
 Cocktail cart 132
 Tray 133
 Picture frame 134
-
+Vase 135
 Fireplace 136
 Coat rack 137
 Chandelier 138
@@ -197,6 +197,7 @@ Washer/Dryer 190
 
 
 Basket 197
+
 `.split("\n")
     .map(i => i.trim())
     .filter(i => i !== '')
